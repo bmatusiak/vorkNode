@@ -1,14 +1,37 @@
 var url = require("url");
+var fs = require("fs");
 
 function Vork(options) {
      var self = this;
      
-     this.config = {}
-
-     if(typeof(options) === 'object'){
-          this.config.basepath = options.basepath || __dirname;
+     this.configDefaults = {
+          basepath: '__dirname',
+          DEBUG: false,
+          modelsFolder:'/models',
+          viewsFolder:'/views',
+          elementsFolder:'/elements',
+          controlersFolder:'/controlers',
+          layoutsFoler:'/layouts',
+          webrootFolder:'../webroot',
+          helpersFolder:'/helpers',
+          DS:'/',
+          EOL:'\r\n'
      }
-
+     
+     this.config = {};
+     
+     if(typeof(options) === 'object'){
+          for(property in this.configDefaults){
+               if(!options[property])
+                    this.config[property] = this.configDefaults[property];
+               else{
+                    this.config[property] = options[property];
+                    console.log('override default property '+property+' ('+options[property]+')');
+               }
+          }
+     }
+     
+     
      this.tools = {
           checkFile : function(file) {
                try {
@@ -18,12 +41,24 @@ function Vork(options) {
                catch (e) {
                     return false;
                }
-          }
+          },
+          sandbox : function(curMVCrquest) {
+               return {
+                    mvc:curMVCrquest,   //sandbox gets sent to all MVC objects so the oject can overide or gather info
+                    //load:self.load,                 //also keeps MVC object from Killing the vork object
+                    get:self.get                    
+               };
+          }          
      };
      this.get = {
           view: function(viewName, dataObj) {
 
 
+          },
+          helper: function(helperName, dataObj) {
+               if(self.tools.checkFile(self.config.basepath+'/helpers/'+helperName))
+                    return require(self.config.basepath+'/helpers/'+helperName);
+               else return {};
           },
           layout: function(layoutName, dataObj) {
 
@@ -92,7 +127,7 @@ Vork.prototype.loadAction = function loadAction(req) {
      var controlerName = defaults.controler;
      if (this.tools.checkFile(this.config.basepath + '/controlers/' + defaults.controler)) {
           defaults.controler = require('./controlers/' + defaults.controler)[defaults.action];
-          defaults.controler = defaults.controler(vork.Sandbox(defaults));
+          defaults.controler = defaults.controler(this.tools.sandbox(defaults));
           DidIFail = false;
      }
      else {
@@ -103,7 +138,7 @@ Vork.prototype.loadAction = function loadAction(req) {
      if (this.tools.checkFile(this.config.basepath + '/views/' + defaults.view) && defaults.view !== false) {
           defaults.view = require('./views/' + defaults.view)[defaults.view];
           if (typeof(defaults.view) === 'function') {
-               defaults.view = defaults.view(vork.Sandbox(defaults));
+               defaults.view = defaults.view(this.tools.sandbox(defaults));
                obj.content = defaults.view;
                DidIFail = false;
           }
@@ -114,9 +149,9 @@ Vork.prototype.loadAction = function loadAction(req) {
           defaults.view = null;
      }
 
-     if (vork.checkFile(this.config.basepath + '/layouts/' + defaults.layout)) {
+     if (this.tools.checkFile(this.config.basepath + '/layouts/' + defaults.layout)) {
           defaults.layout = require('./layouts/' + defaults.layout)[defaults.layout];
-          defaults.layout = defaults.layout(vork.Sandbox(defaults));
+          defaults.layout = defaults.layout(this.tools.sandbox(defaults));
           obj.content = defaults.layout;
      }
      else {
@@ -130,7 +165,7 @@ Vork.prototype.loadAction = function loadAction(req) {
                "Content-Type": defaults.contentType,
                "Content-Length": obj.content.length
           };
-          if (!DEBUG) obj.headers["Cache-Control"] = "public";
+          if (!this.config.DEBUG) obj.headers["Cache-Control"] = "public";
           obj.code = 200;
           return obj;
      }

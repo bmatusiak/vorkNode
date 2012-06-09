@@ -2,8 +2,11 @@ var NoobHTTP = require('NoobHTTP');
 var PORT = 8003;
 
 
+var config = {
+     basepath: __dirname + '/mvc'
+};
 
-var vork = require("./mvc/vork")();
+var vork = require(config.basepath+"/vork")(config);
      
 NoobHTTP.createServer({home: './webroot/',
             port : Number(process.env.PORT || PORT),
