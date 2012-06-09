@@ -4,7 +4,8 @@ var fs = require("fs");
 function Vork(options) {
      var self = this;
      
-     this.configDefaults = {
+     //Config Setup
+     var configDefaults = {
           basepath: '__dirname',
           DEBUG: false,
           modelsFolder:'/models',
@@ -21,16 +22,13 @@ function Vork(options) {
      this.config = {};
      
      if(typeof(options) === 'object'){
-          for(property in this.configDefaults){
+          for(property in configDefaults){
                if(!options[property])
-                    this.config[property] = this.configDefaults[property];
-               else{
+                    this.config[property] = configDefaults[property];
+               else
                     this.config[property] = options[property];
-                    console.log('override default property '+property+' ('+options[property]+')');
-               }
           }
      }
-     
      
      this.tools = {
           checkFile : function(file) {
@@ -42,16 +40,27 @@ function Vork(options) {
                     return false;
                }
           },
-          sandbox : function(curMVCrquest) {
+          sandbox : function(MVCRequest) {
                return {
-                    mvc:curMVCrquest,   //sandbox gets sent to all MVC objects so the oject can overide or gather info
+                    mvc:MVCRequest,   //sandbox gets sent to all MVC objects so the oject can overide or gather info about current state
+                    config:self.tools.clone(self.config),
                     //load:self.load,                 //also keeps MVC object from Killing the vork object
                     get:self.get                    
                };
-          }          
+          },
+          clone: function(obj){
+                    function Clone(){}
+                    return function (obj) { Clone.prototype=obj; return new Clone() 
+               }
+          }
+          
      };
      this.get = {
           view: function(viewName, dataObj) {
+
+
+          },
+          controler: function(viewName, dataObj) {
 
 
           },
@@ -73,8 +82,6 @@ function Vork(options) {
 };
 
 Vork.prototype.mvc = function mvc(req, res) {
-     var self = this;
-
      function compleateRequest(obj, res) {
           res.writeHead(obj.code, obj.headers);
           res.end(obj.req.method === "HEAD" ? "" : obj.content);
@@ -93,25 +100,25 @@ Vork.prototype.mvc = function mvc(req, res) {
 
 Vork.prototype.loadAction = function loadAction(req) {
      var DidIFail = false;
-     var defaults = {};
-     defaults.controler = {};
-     defaults.layout = 'default';
-     defaults.action = 'index';
-     defaults.view = null;
-     defaults.params = [];
-     defaults.contentType = 'text/html';
+     var defaults = {// MVCRequest Defaults
+          controler: {},
+          layout: 'default',
+          action: 'index',
+          view: null,
+          params: [],
+          contentType: 'text/html'
+     }
 
      var obj = {
           content: null,
           headers: null,
           code: 404,
           req: null
-     };
-     obj.req = req;
-     //var defaults = new vork.mvcDefaults();
+     };   obj.req = req;
+     
      var filename = url.parse(req.url).pathname;
      if (filename == '/') filename = "/index";
-     defaults.params = filename.substring(1, filename.length).split('/');
+          defaults.params = filename.substring(1, filename.length).split('/');
 
      defaults.params.reverse();
      if (defaults.params.length) {
