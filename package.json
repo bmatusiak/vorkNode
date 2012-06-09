@@ -1,0 +1,42 @@
+{
+  "author": {
+    "name": "Bradley Matusiak",
+    "email": "bmatusiak@gmail.com"
+  },
+  "name": "vorkNode",
+  "description": "Simple nodejs website framework",
+  "keywords": [
+    "server",
+    "nodejs",
+    "http",
+    "simple",
+    "mvc",
+    "webapp"
+  ],
+  "version": "0.0.1",
+  "homepage": "https://github.com/bmatusiak/vorkNode",
+  "licenses": [
+    {
+      "type": "GNU"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:bmatusiak/vorkNode.git"
+  },
+  "engines": {
+    "node": "~0.6.11"
+  },
+  "dependencies": {
+    "NoobHTTP": ">=0.4.1"
+  },
+  "devDependencies": {},
+  "main": "index",
+  "_id": "vorkNode@0.0.1",
+  "optionalDependencies": {},
+  "_engineSupported": true,
+  "_npmVersion": "1.1.21",
+  "_nodeVersion": "v0.6.18",
+  "_defaultsLoaded": true,
+  "_from": "vorkNode"
+}
