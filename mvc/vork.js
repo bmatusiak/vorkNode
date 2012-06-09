@@ -16,7 +16,8 @@ function Vork(options) {
           webrootFolder:'../webroot',
           helpersFolder:'/helpers',
           DS:'/',
-          EOL:'\r\n'
+          EOL:'\r\n',
+          dbConfig: 'db.js'
      }
      
      this.config = {};
@@ -29,6 +30,7 @@ function Vork(options) {
                     this.config[property] = options[property];
           }
      }
+     
      
      this.tools = {
           checkFile : function(file) {

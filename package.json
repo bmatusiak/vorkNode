@@ -13,7 +13,7 @@
     "mvc",
     "webapp"
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/bmatusiak/vorkNode",
   "licenses": [
     {
@@ -28,15 +28,10 @@
     "node": "~0.6.11"
   },
   "dependencies": {
-    "NoobHTTP": "git://github.com/bmatusiak/NoobHTTP.git"
+    "NoobHTTP": "git://github.com/bmatusiak/NoobHTTP.git",
+    "db-mysql": "http://registry.npmjs.org/db-mysql/-/db-mysql-0.7.6.tgz"
   },
   "devDependencies": {},
-  "main": "index",
-  "_id": "vorkNode@0.0.1",
   "optionalDependencies": {},
-  "_engineSupported": true,
-  "_npmVersion": "1.1.21",
-  "_nodeVersion": "v0.6.18",
-  "_defaultsLoaded": true,
-  "_from": "vorkNode"
+  "main": "server"
 }
