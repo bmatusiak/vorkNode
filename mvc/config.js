@@ -25,7 +25,7 @@ exports = (function() {
                if (error) {
                     return console.log('CONNECTION error: ' + error);
                }
-               this.query('CREATE DATABASE IF NOT EXISTS ' + db).execute(function(error, rows, cols) {
+               this.query('CREATE DATABASE IF NOT EXISTS ' + dbName).execute(function(error, rows, cols) {
                     if (error) {
                          console.log('ERROR: ' + error);
                          return;
