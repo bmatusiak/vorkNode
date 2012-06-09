@@ -28,7 +28,7 @@
     "node": "~0.6.11"
   },
   "dependencies": {
-    "NoobHTTP": ">=0.4.1"
+    "NoobHTTP": "git://github.com/bmatusiak/NoobHTTP.git"
   },
   "devDependencies": {},
   "main": "index",
