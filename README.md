@@ -13,8 +13,9 @@ Requirements:
   * NPM `>= 1.1.16`
 
 Install:
-     
-    npm install git://github.com/bmatusiak/vorkNode.git
+     get clone git://github.com/bmatusiak/vorkNode.git
+     cd vorkNode
+     npm install
     
 ## License
 
