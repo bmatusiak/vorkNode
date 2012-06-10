@@ -11,8 +11,7 @@ var dbConfig = {
                "user": dbUser,
                "password": dbPass,
                "database": dbName
-          };
-          
+               };
 
 var returndb = null;
 

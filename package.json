@@ -13,7 +13,7 @@
     "mvc",
     "webapp"
   ],
-  "version": "0.0.2",
+  "version": "0.0.9",
   "homepage": "https://github.com/bmatusiak/vorkNode",
   "licenses": [
     {
@@ -33,5 +33,9 @@
   },
   "devDependencies": {},
   "optionalDependencies": {},
-  "main": "server"
+  "main": "server",
+  "subdomain": "vorkNode",
+  "scripts": {
+    "start": "server.js"
+  }
 }
