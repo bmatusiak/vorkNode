@@ -1,21 +1,18 @@
-//var NoobHTTP = require('NoobHTTP');
+"use strict";
 
 var config = {
-     basepath: __dirname + '/mvc',
-     webrootFolder:  __dirname + '/webroot'
+     basepath: __dirname+'/mvc',
+     vorkpath: __dirname+"/lib/vork",
+     webrootPath:  __dirname + '/webroot'
 };
 
-var vork = require(config.basepath+"/vork")(config);
+var vork = require(config.vorkpath)(config);
 
 //var vork = new Vork(config);
 
-// config now becomes vork.config
+require('NoobHTTP').createServer(vork.NoobConfig);
 
-require('NoobHTTP').createServer({
-          home: vork.config.webrootFolder+"/",
-          port : vork.config.port,
-          on404 : function(req, res){
-               return vork.mvc(req, res);
-          }
-});
+
+
+
 
