@@ -4,7 +4,8 @@ var config = {
     port:8080,
      basepath: __dirname+'/mvc',
      vorkpath: __dirname+"/lib/vork",
-     webrootPath:  __dirname + '/webroot'
+     webrootPath:  __dirname + '/webroot',
+     cache: false//default true for production
 };
 
 var vork = require(config.vorkpath)(config);
@@ -13,7 +14,4 @@ var vork = require(config.vorkpath)(config);
 
 require('NoobHTTP').createServer(vork.NoobConfig);
 
-console.log('lol')
-
-
-
+console.log('vorkNode Started.')

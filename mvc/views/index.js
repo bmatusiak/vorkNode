@@ -9,7 +9,7 @@ output.push('<div id="connect">');
 output.push('<form action="#">');
 output.push('<fieldset> ');
 output.push('<p>');
-output.push('YAY!This is a chat room. Both the client-side and server-side arewritten in javascript. The source code is<a href="http://github.com/ry/node_chat/tree/master">here</a>.');
+output.push('This is a chat room. Both the client-side and server-side arewritten in javascript. The source code is<a href="http://github.com/ry/node_chat/tree/master">here</a>.');
 output.push('</p>');
 output.push('<label for="nick">Name</label>');
 output.push('<input id="nickInput" class="text"type="text" name="nick" value=""/>');
