@@ -1,7 +1,9 @@
-var chat = exports;
-//view
-chat.init = function(db){//calld when vork loads model for the first time
-    console.log(db);
+module.exports = function(vork){
+    return new Chat(vork);   
+};
+
+function Chat(vork){//calld when vork loads model for the first time
+    console.log(vork.mvc.db);
     var sqlResCaller = function(callback) {
                 return function (error, rows, cols){
                      if (error) {
@@ -11,9 +13,9 @@ chat.init = function(db){//calld when vork loads model for the first time
                     callback( rows, cols);
                 };
         };
-    chat.getMessages = function(){
+    this.getMessages = function(){
         var messages = {};
-        db.query().
+        vork.mvc.db.query().
         select('*').
         from('chat').
         limit(30).
@@ -26,7 +28,7 @@ chat.init = function(db){//calld when vork loads model for the first time
     
     
     (function(){
-        db.query().
+        vork.mvc.db.query().
         select('CREATE IF NOT EXISTS TABLE chat ( id INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,name VARCHAR( 32 ) NOT NULL ,message VARCHAR( 254 ) NOT NULL)').
         execute(sqlResCaller(function(rows, cols) {
                 

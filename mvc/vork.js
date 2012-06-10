@@ -25,7 +25,7 @@ function Vork(options) {
      this.config = {};
      
      if(typeof(options) === 'object'){
-          for(property in configDefaults){
+          for(var property in configDefaults){
                if(!options[property])
                     this.config[property] = configDefaults[property];
                else
@@ -33,11 +33,15 @@ function Vork(options) {
           }
      }
      
+     //
+     
+     this.db = require(this.config.dbConfig);
+     
      //Object Helpers
      this.tools = {
           checkFile : function(file) {
                try {
-                    fs.openSync(file + '.js', 'r')
+                    fs.openSync(file + '.js', 'r');
                     return true;
                }
                catch (e) {
@@ -53,32 +57,28 @@ function Vork(options) {
           },
           clone: function(obj){
                     function Clone(){}
-                    return function (obj) { Clone.prototype = obj; return new Clone() 
-               };
+                    return (function (obj) { Clone.prototype = obj; return new Clone();})(obj);
           }
-          
      };
      this.get = {
-          view: function(viewName, dataObj) {
-
-
+          helper: function(helperName) {
+               if(self.tools.checkFile(self.config.basepath+'/helpers/'+helperName)){
+                    var newVork = self.tools.sandbox(arguments.callee.caller.arguments[0])
+                    return require(self.config.basepath+'/helpers/'+helperName)(newVork);
+               }else return null;
           },
-          controler: function(viewName, dataObj) {
-
-
-          },
-          helper: function(helperName, dataObj) {
-               if(self.tools.checkFile(self.config.basepath+'/helpers/'+helperName))
-                    return require(self.config.basepath+'/helpers/'+helperName);
-               else return {};
-          },
-          layout: function(layoutName, dataObj) {
-
-
+          model: function(modelName) {
+               if(self.tools.checkFile(self.config.basepath+'/models/'+modelName)){
+                    var newVork = self.tools.sandbox(arguments.callee.caller.arguments[0])
+                    newVork.mvc.db = self.db;//set so model can see db connection
+                    return require(self.config.basepath+'/models/'+modelName)(newVork);
+               }else return null;
           },
           element: function(elementName, dataObj) {
-
-
+              if (self.tools.checkFile(self.config.basepath + '/elements/' + elementName)) {
+                    return require(self.config.basepath + '/elements/' + elementName)(dataObj);
+              }
+              else return null;
           }
      };
 
@@ -111,7 +111,7 @@ Vork.prototype.loadAction = function loadAction(req) {
           params: [],
           contentType: 'text/html',
           db: null
-     }
+     };
 
      var obj = {
           content: null,

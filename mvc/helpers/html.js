@@ -1,12 +1,17 @@
-var html = exports;
-//helper
-(function(){
-    html.header = function(data){
+module.exports = function(vork){
+    return new Html(vork);   
+};
+
+function Html(vork){
+    var self = this;
+    self.vork = vork;
+    
+    this.header = function(data){
         var header = [];
         if(data == 'undefined')
             data = '';
         
-        header.push(html.getDocType('html5'));
+        header.push(self.getDocType('html5'));
         header.push('<html>');
         header.push('<head>');
         header.push('<link rel="stylesheet" href="/css/style.css" type="text/css"/>');
@@ -15,25 +20,25 @@ var html = exports;
         header.push('<title>node chat</title>');
         header.push('</head>');
         header.push('<body>');
-        return header.join(html.eol());
+        return header.join(self.eol());
     };
     
-    html.footer = function(){
+    this.footer = function(){
         var footer = [];
         footer.push('</body>');
         footer.push('</html>');
-        return footer.join(html.eol());
+        return footer.join(self.eol());
     };
     
-    html.eol = function(){
+    this.eol = function(){
         return '\r\n';
     };
     
-    html.htmlEntities = function(str) {
+    this.htmlEntities = function(str) {
         return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     };
     
-    html.getDocType = function(type){
+    this.getDocType = function(type){
     var docTypes = {'html5'   : '<!DOCTYPE html>',
                 'xhtml1.1'     : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">',
                 'strict'       : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
@@ -46,4 +51,4 @@ var html = exports;
             };    
             return docTypes[type];
     };
-})();
+}

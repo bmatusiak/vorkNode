@@ -12,10 +12,15 @@ var dbConfig = {
                "password": dbPass,
                "database": dbName
           };
-exports = (function() {
+          
+
+var returndb = null;
+
+(function() {
      switch (dbType) {
      case 'mysql':
-          console.log('MYSQL LOADING!!')
+          console.log('MYSQL LOADING!!');
+          mysql.Database.prototype.iTself = function iTself(){return this;};
           var db = new mysql.Database(dbConfig);
           db.on('error', function(error) {
                console.log('ERROR: ' + error);
@@ -25,18 +30,16 @@ exports = (function() {
                if (error) {
                     return console.log('CONNECTION error: ' + error);
                }
-               this.query('CREATE DATABASE IF NOT EXISTS ' + dbName).execute(function(error, rows, cols) {
-                    if (error) {
-                         console.log('ERROR: ' + error);
-                         return;
-                    }
-               });
           });
-          return db;
+          returndb = db.iTself();
+          break;
      case 'mysqlite':
-          return null;
+          returndb = null;
+          break;
      default:
-          //NO DB TYPE SELECTED
-          return null;
+          returndb = null;
+          break;
      }
 })();
+
+module.exports = returndb;
