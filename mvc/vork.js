@@ -6,7 +6,7 @@ function Vork(options) {
      
      //Config Setup
      var configDefaults = {
-          basepath: '__dirname',
+          basepath: __dirname,
           DEBUG: false,
           modelsFolder:'/models',
           viewsFolder:'/views',
@@ -17,8 +17,10 @@ function Vork(options) {
           helpersFolder:'/helpers',
           DS:'/',
           EOL:'\r\n',
-          dbConfig: 'db.js'
-     }
+          dbConfig: __dirname+'/db.js',
+          port:Number(process.env.PORT || 80),
+          globals: {}
+     };
      
      this.config = {};
      
@@ -31,7 +33,7 @@ function Vork(options) {
           }
      }
      
-     
+     //Object Helpers
      this.tools = {
           checkFile : function(file) {
                try {
@@ -44,16 +46,15 @@ function Vork(options) {
           },
           sandbox : function(MVCRequest) {
                return {
-                    mvc:MVCRequest,   //sandbox gets sent to all MVC objects so the oject can overide or gather info about current state
-                    config:self.tools.clone(self.config),
-                    //load:self.load,                 //also keeps MVC object from Killing the vork object
+                    mvc:MVCRequest,   //sandbox gets sent to all MVC objects so the oject can overide or gather info about current state also keeps MVC object from Killing the vork object
+                    config:self.tools.clone(self.config),//read-only config so if changed it wont effect anything except for what is running inside sandbox
                     get:self.get                    
                };
           },
           clone: function(obj){
                     function Clone(){}
-                    return function (obj) { Clone.prototype=obj; return new Clone() 
-               }
+                    return function (obj) { Clone.prototype = obj; return new Clone() 
+               };
           }
           
      };
@@ -81,7 +82,7 @@ function Vork(options) {
           }
      };
 
-};
+}
 
 Vork.prototype.mvc = function mvc(req, res) {
      function compleateRequest(obj, res) {
@@ -91,7 +92,7 @@ Vork.prototype.mvc = function mvc(req, res) {
 
      function checkRequest(obj, res) {
           if (obj && obj.code === 200) {
-               compleateRequest(obj, res)
+               compleateRequest(obj, res);
                return true;
           }
           return false;
@@ -101,14 +102,15 @@ Vork.prototype.mvc = function mvc(req, res) {
 };
 
 Vork.prototype.loadAction = function loadAction(req) {
-     var DidIFail = false;
+     var DidIFail = false;//Never Fail Unless We Do Fail!
      var defaults = {// MVCRequest Defaults
-          controler: {},
+          controler: null,
           layout: 'default',
           action: 'index',
           view: null,
           params: [],
-          contentType: 'text/html'
+          contentType: 'text/html',
+          db: null
      }
 
      var obj = {
@@ -136,13 +138,17 @@ Vork.prototype.loadAction = function loadAction(req) {
      var controlerName = defaults.controler;
      if (this.tools.checkFile(this.config.basepath + '/controlers/' + defaults.controler)) {
           defaults.controler = require('./controlers/' + defaults.controler)[defaults.action];
-          defaults.controler = defaults.controler(this.tools.sandbox(defaults));
-          DidIFail = false;
+          if(typeof(defaults.controler) === 'function'){
+               defaults.controler = defaults.controler(this.tools.sandbox(defaults));
+               DidIFail = false;
+          }
+          else DidIFail = true;
      }
      else {
           defaults.controler = null;
           DidIFail = true;
      }
+     
      if (defaults.view === null) defaults.view = controlerName;
      if (this.tools.checkFile(this.config.basepath + '/views/' + defaults.view) && defaults.view !== false) {
           defaults.view = require('./views/' + defaults.view)[defaults.view];
@@ -160,8 +166,10 @@ Vork.prototype.loadAction = function loadAction(req) {
 
      if (this.tools.checkFile(this.config.basepath + '/layouts/' + defaults.layout)) {
           defaults.layout = require('./layouts/' + defaults.layout)[defaults.layout];
-          defaults.layout = defaults.layout(this.tools.sandbox(defaults));
-          obj.content = defaults.layout;
+          if (typeof(defaults.layout) === 'function') {
+               defaults.layout = defaults.layout(this.tools.sandbox(defaults));
+               obj.content = defaults.layout;
+          }
      }
      else {
           defaults.view = null;
@@ -179,9 +187,7 @@ Vork.prototype.loadAction = function loadAction(req) {
           return obj;
      }
      return obj;
-}
-
-
-module.exports = function(options) {
-     return new Vork(options);
 };
+
+
+module.exports = function(opt){return new Vork(opt);};
