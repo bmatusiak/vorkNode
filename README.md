@@ -29,18 +29,24 @@ when the server gets a 404 error is directs the request to vork.mvc(req, res)
 
 these are the steps it takes to produce output from vorkNode
 
-    1.construct URL to mvc params
+    1.Construct URL to mvc params
+    
 * so lets say the url is /home/login
 * controler = home
 * controler.action = login
 
     2.Call Controler
+    
 * the return data will be sent to view(most likely a object(s))
 * this can be absent if view is present
 
     3.Call View
+    
 * the view that gets call will have the same name as controler unless controler
 * the return data will be sent to layout(This will be a string)
 
     4.Call Layout
+    
 * this is the last object that gets called
+* if controler say layout = null then only view is output
+* default layout is mvc/layout/default.js
