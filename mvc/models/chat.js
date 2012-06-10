@@ -3,36 +3,47 @@ module.exports = function(vork){
 };
 
 function Chat(vork){//calld when vork loads model for the first time
-    console.log(vork.mvc.db);
-    var sqlResCaller = function(callback) {
-                return function (error, rows, cols){
-                     if (error) {
-                            console.log('ERROR: ' + error);
-                            return;
-                    }   
-                    callback( rows, cols);
-                };
-        };
-    this.getMessages = function(){
-        var messages = {};
+    
+    this.getMessages = function(optName){
+        var ret = {};
         vork.mvc.db.query().
         select('*').
         from('chat').
         limit(30).
-        execute(sqlResCaller(function(rows, cols) {
+        execute(function(error, rows, cols) {
                 console.log(rows.length + ' ROWS found');
-                messages = rows;
-        }));
-        return messages;
+                ret.data = rows;
+                ret.comment = rows.length + ' ROWS found';
+        },{async:false});
+        return ret;
     };
     
+    this.addMessages = function(name,message){
+        var res = {};
+        vork.mvc.db.query().
+        insert('chat',
+            ['name', 'message'],
+            [name, message]
+        ).
+        execute(sqlResCaller(function(error, result) {
+                if (error) {
+                        console.log('ERROR: ' + error);
+                        return res;
+                }
+                console.log('GENERATED id: ' + result.id);
+                res = result.id;
+        }));
+        
+        return res;
+    };
     
     (function(){
-        vork.mvc.db.query().
-        select('CREATE IF NOT EXISTS TABLE chat ( id INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,name VARCHAR( 32 ) NOT NULL ,message VARCHAR( 254 ) NOT NULL)').
-        execute(sqlResCaller(function(rows, cols) {
-                
-        }));
+        var sql = 'CREATE TABLE IF NOT EXISTS chat '+
+                  '(id INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,'+
+                  'name VARCHAR( 32 ) NOT NULL ,'+
+                  'message VARCHAR( 254 ) NOT NULL)';
+        
+        vork.mvc.db.query(sql).execute();
         
         console.log("Chat Model init done");
     })();
