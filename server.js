@@ -9,13 +9,6 @@ var config = {
      cache: false//default true for production
 };
 
-/*var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\nApp (vork-node) is running on Node.JS ' + process.version);
-}).listen(process.env.app_port || 3000);
-*/ 
-
 var port = config.port;
 
 var vork = require('./lib/vork');
