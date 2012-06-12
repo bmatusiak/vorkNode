@@ -15,5 +15,4 @@ node_modules
 npm-debug.log
 
 .nodester.appconfig
-node_modules
-mvc/db.js
+db.js
