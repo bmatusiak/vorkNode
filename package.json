@@ -4,6 +4,7 @@
     "email": "bmatusiak@gmail.com"
   },
   "name": "vorkNode",
+  "node":"0.6.17",
   "description": "Simple nodejs website framework",
   "keywords": [
     "server",
@@ -13,7 +14,7 @@
     "mvc",
     "webapp"
   ],
-  "version": "0.0.9",
+  "version": "0.1.0",
   "homepage": "https://github.com/bmatusiak/vorkNode",
   "licenses": [
     {
@@ -24,18 +25,9 @@
     "type": "git",
     "url": "git://github.com:bmatusiak/vorkNode.git"
   },
-  "engines": {
-    "node": "~0.6.11"
-  },
   "dependencies": {
-    "NoobHTTP": "git://github.com/bmatusiak/NoobHTTP.git",
-    "db-mysql": "http://registry.npmjs.org/db-mysql/-/db-mysql-0.7.6.tgz"
-  },
-  "devDependencies": {},
-  "optionalDependencies": {},
-  "main": "server",
-  "subdomain": "vorkNode",
-  "scripts": {
-    "start": "server.js"
+    "socket.io": "0.9.6",
+    "express": "2.5.9",
+    "mysql": "0.9.6"
   }
 }

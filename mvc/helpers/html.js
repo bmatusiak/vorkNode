@@ -14,10 +14,11 @@ function Html(vork){
         header.push(self.getDocType('html5'));
         header.push('<html>');
         header.push('<head>');
-        header.push('<link rel="stylesheet" href="/css/style.css" type="text/css"/>');
-        header.push('<script src="/js/jquery-1.2.6.min.js" type="text/javascript"></script>');
-        header.push('<script src="/js/client.js" type="text/javascript"></script>');
-        header.push('<title>node chat</title>');
+        header.push('<script src="/socket.io/socket.io.js"></script>');
+        if(data && data.title)
+            header.push('<title>'+data.title+'</title>');
+        else
+            header.push('<title>HelloWorld</title>');
         header.push('</head>');
         header.push('<body>');
         return header.join(self.eol());
