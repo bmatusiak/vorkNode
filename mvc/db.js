@@ -1,5 +1,5 @@
 var returndb = null;
-var dbType = 'mysql';
+var dbType = 'NONE';
 
 //Fill these in...
 var DATABASE = 'DATABASE';
