@@ -1,12 +1,12 @@
 var returndb = null;
 var dbType = 'NONE';
-
+ 
 //Fill these in...
 var DATABASE = 'DATABASE';
 var USERNAME = 'USERNAME';
 var PASSWORD = 'PASSWORD';
 var HOSTNAME = 'HOSTNAME';
-
+ 
 
 (function() {
     switch (dbType) {
