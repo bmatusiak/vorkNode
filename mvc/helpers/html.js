@@ -33,7 +33,7 @@ function Html(vork){
                     string = "<" + string + ">";
                 }
                 //console.log(string);
-                return string;
+                return string + self.eol();
             };  
     }
     }

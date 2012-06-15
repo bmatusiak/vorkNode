@@ -52,27 +52,39 @@ layout.default = function(vork){
         })
     );
     
+    var MenuData = [{   href:'/',
+                        data:'VorkNode'
+                    },{ href:'/doc',
+                        data:'Documentation'
+                    },{ href:'/doc/quick',
+                        data:'QucikStart'
+                    }];
+    function menuData(data){
+        var url = require("url");
+        url = url.parse(vork.mvc.req.url).pathname
+        var string = '';
+        for(var i in data){
+            if(url == data[i].href){
+                string += html.tag.li({
+                        class:'current_page_item',
+                        data:html.tag.a(data[i])
+                    })
+            }else{
+                string += html.tag.li({
+                    data:html.tag.a(data[i])
+                })
+            }
+                
+        }
+        console.log(string);
+        return string+cleafixTag;
+    }
     //menu
     header.push(
         html.tag.div({
             id:'menu',
             data:html.tag.ul({
-                data:html.tag.li({
-                    data:html.tag.a({
-                        href:'/',
-                        data:'VorkNode'
-                    })
-                })+html.tag.li({
-                    data:html.tag.a({
-                        href:'/doc',
-                        data:'Documentation'
-                    })
-                })+html.tag.li({
-                    data:html.tag.a({
-                        href:'/doc/quick',
-                        data:'Quick Reference'
-                    })
-                })+cleafixTag
+                data:menuData(MenuData)
             })
         })
     );
