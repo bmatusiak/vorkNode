@@ -58,6 +58,8 @@ layout.default = function(vork){
                         data:'Documentation'
                     },{ href:'/doc/quick',
                         data:'QucikStart'
+                    },{ href:'/donate',
+                        data:'Donate'
                     }];
     function menuData(data){
         var url = require("url");
