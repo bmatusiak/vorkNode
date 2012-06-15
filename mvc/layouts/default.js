@@ -5,7 +5,7 @@ layout.default = function(vork){
     var layout = [];
     
     var head = {};
-    head.css = ['http://fonts.googleapis.com/css?family=Oswald','/css/style.css'];
+    head.css = ['//fonts.googleapis.com/css?family=Oswald','/css/style.css'];
     head.title = "vorkNode";
     head.meta = [{name:'description',content:''},{name:'keywords',content:''}];
     layout.push(html.header(head));
@@ -25,7 +25,7 @@ layout.default = function(vork){
                     href:'/',
                     data:'vorkNode'
                 })
-            })
+            })+" Open-Source NodeJS MVC Frameword"
         })
     );
     
@@ -78,7 +78,6 @@ layout.default = function(vork){
             }
                 
         }
-        console.log(string);
         return string+cleafixTag;
     }
     //menu
