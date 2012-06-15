@@ -24,12 +24,12 @@ function Html(vork){
                         string = "<" + string + ">" + data.data + "</" + name + ">";
                     }
                     else {
-                        string += "/";
+                        //string += "/";
                         string = "<" + string + ">";
                     }
                 }
                 else {
-                    string += "/";
+                    //string += "/";
                     string = "<" + string + ">";
                 }
                 //console.log(string);
@@ -44,9 +44,11 @@ function Html(vork){
         var header = [];
         var head = [];
         if(typeof(data) != 'object')
-            data = {title:vork.config.title,
-                    docType:'html5'};
-        
+            data = {};
+            
+        if(!data.title) data.title = vork.config.title;
+        if(!data.docType) data.docType = 'html5';
+                
         header.push(self.getDocType(data.docType));
         header.push(self.tag.html());
         if(data.css){
