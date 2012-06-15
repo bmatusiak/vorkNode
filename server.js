@@ -21,10 +21,10 @@ var io = require('socket.io'),
 app.configure(function () {
     app.use(express.cookieParser());
     app.use(express.session({secret: 'secret', key: 'express.sid'}));
+    app.use(express.static(config.webrootPath));
     app.use(function (req, res) {
          vork.mvc(req, res);
     });
-    app.use(express.static(__dirname + '/webroot'));
     app.use(express.errorHandler());
 });
  

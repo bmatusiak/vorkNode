@@ -5,22 +5,63 @@ module.exports = function(vork){
 function Html(vork){
     var self = this;
     self.vork = vork;
+    console.log("helper html loaded!");
+    function Tag() {
+        var tags = require("./_tags");
+        for (var i in tags) {
+            var tag = tags[i];
+            this[tag] = _makeTag(tag);
+        }
+        //console.log("html tags created")
+        function _makeTag(name){
+        return function(data) {
+                var string = name;
+                if (data) {
+                    for (var i in data) {
+                        if (i != "data") string += " "+i + '="' + data[i] + '"';
+                    }
+                    if (data.data ||  data.data === '') {
+                        string = "<" + string + ">" + data.data + "</" + name + ">";
+                    }
+                    else {
+                        string += "/";
+                        string = "<" + string + ">";
+                    }
+                }
+                else {
+                    string += "/";
+                    string = "<" + string + ">";
+                }
+                //console.log(string);
+                return string;
+            };  
+    }
+    }
+    
+    this.tag = new Tag();
     
     this.header = function(data){
         var header = [];
-        if(data == 'undefined')
-            data = '';
+        var head = [];
+        if(typeof(data) != 'object')
+            data = {title:vork.config.title,
+                    docType:'html5'};
         
-        header.push(self.getDocType('html5'));
-        header.push('<html>');
-        header.push('<head>');
-        header.push('<script src="/socket.io/socket.io.js"></script>');
-        if(data && data.title)
-            header.push('<title>'+data.title+'</title>');
-        else
-            header.push('<title>HelloWorld</title>');
-        header.push('</head>');
-        header.push('<body>');
+        header.push(self.getDocType(data.docType));
+        header.push(self.tag.html());
+        if(data.css){
+            for(var i in data.css){
+                   head.push(self.tag.link({rel:'stylesheet',type:'text/css',href:data.css[i]}));
+            }
+        }
+        head.push(self.tag.script({src:'/socket.io/socket.io.js',data:''}));
+        if(data.title)
+            head.push(self.tag.title({data:data.title}));
+        
+        
+        header.push(self.tag.head({data:head.join(self.eol())}));
+        
+        header.push(self.tag.body());
         return header.join(self.eol());
     };
     
@@ -30,7 +71,6 @@ function Html(vork){
         footer.push('</html>');
         return footer.join(self.eol());
     };
-    
     this.eol = function(){
         return '\r\n';
     };

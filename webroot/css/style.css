@@ -1,0 +1,268 @@
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 3.0 License
+
+Name       : Lower Priority
+Description: A two-column, fixed-width design with a bright color scheme.
+Version    : 1.0
+Released   : 20120130
+*/
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: underline;
+	color: #CF1302;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+body {
+	background: #E0E0E0;
+	font-size: 12pt;
+	color: #808080;
+	line-height: 1.75em;
+}
+
+body,input {
+	font-family: Tahoma, sans-serif;
+}
+
+br.clearfix {
+	clear: both;
+}
+
+h1,h2,h3,h4 {
+	/*text-transform: lowercase;*/
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+h2 {
+	font-size: 2.25em;
+}
+
+h2,h3,h4 {
+	margin-bottom: 1em;
+	color: #FFFFFF;
+	font-family: Oswald, sans-serif;
+}
+
+h3 {
+	font-size: 1.75em;
+}
+
+h4 {
+	font-size: 1.5em;
+}
+
+img.alignleft {
+	float: left;
+	margin: 5px 20px 20px 0;
+}
+
+img.aligntop {
+	margin: 5px 0 20px 0;
+}
+
+p {
+	margin-bottom: 1.5em;
+}
+
+ul {
+	margin-bottom: 1.5em;
+}
+
+ul h4 {
+	margin-bottom: 0.35em;
+}
+
+#content {
+	padding: 15px;
+	width: 75%;
+	float: left;
+}
+
+#footer {
+	padding: 40px 0 95px 0;
+	text-align: center;
+	margin: 0 0 50px 0;
+}
+
+#footer a {
+	color: #707070;
+}
+
+#header {
+	padding: 35px;
+	color: #FFFFFF;
+	position: relative;
+	height: 130px;
+	border-top: solid 1px #F7F1E8;
+	background: #8A7B65 url(images/img02.gif) repeat-x top left ;
+	width: auto;
+}
+
+#logo {
+	line-height: 149px;
+	top: 0;
+	left: 35px;
+	height: 149px;
+	position: absolute;
+	text-shadow: 0px 2px 1px #3F372B;
+}
+
+#logo a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#logo h1 {
+	font-family: Oswald, sans-serif;
+	font-size: 3.25em;
+}
+
+#menu {
+	position: absolute;
+	line-height: 55px;
+	width: 100%;
+	background: #DE2211 url(images/img04.gif) repeat-x top left;
+	font-family: Oswald, sans-serif;
+	left: 0;
+	bottom: 0;
+	padding: 0;
+	border-top: solid 1px #FC403C;
+	border-bottom: solid 1px #B60000;
+	height: 55px;
+	margin: 0 0 0 0;
+}
+
+#menu a {
+	color: #FFFFFF;
+	/*text-transform: lowercase;*/
+	font-size: 1.2em;
+	letter-spacing: -1px;
+	text-decoration: none;
+	text-shadow: 0px 1px 1px #590200;
+}
+
+#menu ul {
+	list-style: none;
+}
+
+#menu ul li {
+	padding: 15px 15px 15px 15px;
+	display: inline;
+}
+
+#menu ul li.current_page_item {
+	background-color:#E10000;
+}
+
+#page {
+	width: 100%;
+	color: #5B5B5B;
+	position: relative;
+	border-top: solid 1px #FFFFFF;
+	padding: 45px 0 15px 0;
+	background: #FFFFFF url(images/img03.gif) repeat-x top left;
+	margin: 0 0 0 0;
+	border-bottom: solid 5px #D0D0D0;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+#page .section-list {
+	padding-left: 0;
+	list-style: none;
+}
+
+#page .section-list li {
+	padding: 20px 0 20px 0;
+	clear: both;
+}
+
+#page a {
+	color: #1C1C1C;
+}
+
+#page h2, #page h3, #page h4 {
+	color: #2F2F2F;
+	text-shadow: 0px 2px 0px #FFFFFF;
+}
+
+#page strong {
+	color: #121212;
+}
+
+#page ul {
+	list-style: none;
+}
+
+#page ul li {
+	padding: 10px 0 10px 0;
+	border-top: dotted 1px #D0D0D0;
+}
+
+#page ul li.first {
+	border-top: 0;
+	padding-top: 0;
+}
+
+.post {
+	overflow: hidden;
+	margin: 0 0 20px 0;
+}
+
+#search {
+	line-height: 159px;
+	position: absolute;
+	top: 0;
+	right: 35px;
+	height: 159px;
+}
+
+#search input.form-submit {
+	border: 0;
+	border-top: solid 1px #FC403C;
+	border-bottom: solid 1px #B60000;
+	font-family: Oswald, sans-serif;
+	margin-left: 1em;
+	color: #FFFFFF;
+	padding: 2px 8px 3px 8px;
+	background: #CF1302;
+	text-shadow: 0px 1px 1px #590200;
+	/*text-transform: lowercase;*/
+	border-radius: 5px;
+}
+
+#search input.form-text {
+	background: #5C4D37;
+	border: 0;
+	border-bottom: solid 1px #A89983;
+	padding: 5px 8px 5px 8px;
+	color: #C4B8A8;
+	border-radius: 5px;
+}
+
+#sidebar {
+	padding: 0;
+	width: 24%;
+	margin: 0 0 0 auto;
+}
+
+#wrapper {
+	margin: 0px auto 0 auto;
+	width: 100%;
+	position: relative;
+}
+
+table {
+	width:100%;	
+}
