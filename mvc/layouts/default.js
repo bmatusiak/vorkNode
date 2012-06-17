@@ -63,33 +63,38 @@ layout.default = function(vork){
                     }];
     function menuData(data){
         var url = require("url");
-        url = url.parse(vork.mvc.req.url).pathname
+        url = url.parse(vork.mvc.req.url).pathname;
         var string = '';
         for(var i in data){
-            if(url == data[i].href){
-                string += html.tag.li({
-                        class:'current_page_item',
-                        data:html.tag.a(data[i])
-                    })
-            }else{
-                string += html.tag.li({
-                    data:html.tag.a(data[i])
-                })
-            }
+            var liData = {data:html.tag.a(data[i])};
+            if(url == data[i].href)
+                liData.class = 'current_list_item';
                 
+            string += html.tag.li(liData);
         }
-        return string+cleafixTag;
+        return string;
     }
     //menu
     header.push(
         html.tag.div({
             id:'menu',
             data:html.tag.ul({
-                data:menuData(MenuData)
+                data:menuData(MenuData)+cleafixTag
             })
         })
     );
-    
+    function listData(data){
+        var url = require("url");
+        url = url.parse(vork.mvc.req.url).pathname;
+        var string = '';
+        for(var i in data){
+            var liData = {data:html.tag.a(data[i])};
+            if(url == data[i].href)
+                liData.class = 'current_list_item';
+            string += html.tag.li(liData);
+        }
+        return string+cleafixTag;
+    }
     content.push(html.tag.div({id:"header",data:header.join(html.eol())}));
     
     page.push(
@@ -98,10 +103,12 @@ layout.default = function(vork){
             data:vork.mvc.view
         })
     );
+    
+    
     page.push(
         html.tag.div({
             id:'sidebar',
-            data:''
+            data:sidebar.join(html.eol())
         })
     );
     
