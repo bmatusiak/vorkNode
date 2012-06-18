@@ -1,11 +1,9 @@
-module.exports = function(vork) {
-    return new Users(vork);
-};
+module.exports = function(vork) { //calld when vork loads model every time
 
-function Users(vork) { //calld when vork loads model every time
-
-    this.user = function(id) {
-
+    var users = {};
+    
+    users.user = function(id) {
+    
     };
 
 
@@ -15,7 +13,9 @@ function Users(vork) { //calld when vork loads model every time
                     'user_name VARCHAR( 32 ) NOT NULL ,' +
                     'user_password VARCHAR( 254 ) NOT NULL)';
 
-        vork.mvc.db.query(sql);
+        vork.db.query(sql);
         console.log("Users Model init done");
     })();
+    
+    return users;
 };

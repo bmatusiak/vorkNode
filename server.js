@@ -1,6 +1,5 @@
 "use strict";
 
-
 var config = {
     port: process.env.app_port || process.env.PORT || 3000,
      basepath: __dirname+'/mvc',
@@ -9,12 +8,7 @@ var config = {
      cache: false//default true for production
 };
 
-var port = config.port;
-
-var vork = require('./lib/vork');
-vork = vork(config)
-
-var //io = require('socket.io'),
+var vork = require('./lib/vork')(config),
     express = require('express'),
     app = express.createServer();
     
@@ -27,15 +21,4 @@ app.configure(function () {
     app.use(express.errorHandler());
 });
  
-app.listen(port);
-/*
-var sio = io.listen(app);
- 
-sio.sockets.on('connection', function (socket) {
-    console.log('A socket connected! == '+ socket);
-    socket.on('message', function (data) {
-        socket.emit('Message Revieved');
-        console.log('A message! == '+ data);
-    });
-    socket.on('disconnect', function (data) {console.log('A socket disconnected! == '+ socket);});
-});*/
+app.listen(config.port);

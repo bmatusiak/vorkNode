@@ -61,17 +61,17 @@ function Html(vork){
             head.push(self.tag.title({data:data.title}));
         
         
-        header.push(self.tag.head({data:head.join(self.eol())}));
+        header.push(self.tag.head({data:head.join('')}));
         
         header.push(self.tag.body());
-        return header.join(self.eol());
+        return header.join("");
     };
     
     this.footer = function(){
         var footer = [];
         footer.push('</body>');
         footer.push('</html>');
-        return footer.join(self.eol());
+        return footer.join("");
     };
     this.eol = function(){
         return '\r\n';
@@ -92,6 +92,6 @@ function Html(vork){
                 'mobile1.1'    : '<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.1//EN "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile11.dtd">',
                 'mobile1.0'    : '<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">'
             };    
-            return docTypes[type];
+            return docTypes[type]+ self.eol();
     };
 }

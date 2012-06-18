@@ -6,6 +6,11 @@ module.exports = function(vork){
     controler.index = function(){
         return   {Speak:'Hello World'}; 
     };
+    
+    controler.quick = function(){
+        return   {Speak:'Hello World'}; 
+    };
+    
 
 return controler;
 };
