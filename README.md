@@ -23,9 +23,26 @@ Install:
 ## License
 
 The GPL version 3, read it at [http://www.gnu.org/licenses/gpl.txt](http://www.gnu.org/licenses/gpl.txt)
-
+## inspirational port
+    http://vork.us/
 ----------
 
-
-
-
+      (controler_only)    ____________                      ____________
+        |           |    |           |                      |           |
+        |   model   |--->| controler |                      |  elements |
+        |___________|    |___________|                      |____(ejs)__|
+                                |
+                         _______V_____                      ____________
+                         |           |                      |           |
+                         |   view    |                      |  helpers  |
+                         |____(ejs)__|--                    |___________|
+                                |       \
+                         _______V_____  \
+                         |           |  \
+                         |   layout  |  \
+                         |____(ejs)__|  \
+                                |       \
+                         _______V_____  \
+                         |           |<-\
+                         |   ouput   |
+                         |___________|                            
