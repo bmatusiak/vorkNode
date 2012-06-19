@@ -26,22 +26,22 @@ The GPL version 3, read it at [http://www.gnu.org/licenses/gpl.txt](http://www.g
 ## inspirational port
     http://vork.us/
 ----------
-
-      (controler_only)    ____________                      ____________
-        |           |    |           |                      |           |
-        |   model   |--->| controler |                      |  elements |
-        |___________|    |___________|                      |____(ejs)__|
-                                |
-                         _______V_____                      ____________
-                         |           |                      |           |
-                         |   view    |                      |  helpers  |
-                         |____(ejs)__|--                    |___________|
-                                |       \
-                         _______V_____  \
-                         |           |  \
-                         |   layout  |  \
-                         |____(ejs)__|  \
-                                |       \
+##Parse Order
+      (controler_only)    ____________               ____________
+        |           |    |           |     *|   |----|           |
+        |   model   |--->| controler |      |   |    |  elements |
+        |___________|    |___________|      |   |    |____(ejs)__|
+                                |           |   |
+                         _______V_____      |   |     ____________
+                         |           |      |   |    |           |
+                         |   view    |      |---|----|  helpers  |
+                         |____(ejs)__|--    |   |    |___________|
+                                |       \   |   |
+                         _______V_____  \   |   |      ____________
+                         |           |  \   |   |    |           |
+                         |   layout  |  \   |   |    |  vorkNode |
+                         |____(ejs)__|  \   |   |----|  objects  |
+                                |       \  *|        |___________|
                          _______V_____  \
                          |           |<-\
                          |   ouput   |
