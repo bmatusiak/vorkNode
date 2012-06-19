@@ -1,5 +1,7 @@
 "use strict";
-
+process.on('uncaughtException', function(err) {
+  console.log('server.js caught error: ',err);
+});
 var config = {
     port: process.env.app_port || process.env.PORT || 3000,
      basepath: __dirname+'/mvc',
@@ -16,8 +18,9 @@ app.configure(function () {
     app.use(express.cookieParser());
     app.use(express.bodyParser());
     app.use(express.session({secret: 'secret', key: 'express.sid'}));
-    app.use(vork.mvc());
     app.use(express.static(config.webrootPath));
+    app.use(vork.mvc());
+    //app.use(express.static(config.webrootPath));
     app.use(express.errorHandler());
 });
  

@@ -3,8 +3,8 @@ module.exports = function(vork){
     var controler = {};
     
     
-    controler.index = function(){
-        return   {Speak:'Hello World'}; 
+    controler.index = function(callback){
+        callback({Speak:'Hello World'}); 
     };
 
 return controler;
