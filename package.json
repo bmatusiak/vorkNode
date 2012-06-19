@@ -4,7 +4,11 @@
     "email": "bmatusiak@gmail.com"
   },
   "name": "vorkNode",
-  "node":"0.6.17",
+  "node":"0.6.18",
+  "engines": {
+    "node": "0.6.18",
+    "npm":  "1.1.9"
+  },
   "description": "Simple nodejs website framework",
   "keywords": [
     "server",
