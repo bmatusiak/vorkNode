@@ -56,7 +56,7 @@ function Html(vork){
                    head.push(self.tag.link({rel:'stylesheet',type:'text/css',href:data.css[i]}));
             }
         }
-        head.push(self.tag.script({src:'/socket.io/socket.io.js',data:''}));
+        //head.push(self.tag.script({src:'/socket.io/socket.io.js',data:''}));
         if(data.title)
             head.push(self.tag.title({data:data.title}));
         
