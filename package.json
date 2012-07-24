@@ -33,6 +33,8 @@
     "socket.io": "0.9.6",
     "express": "2.5.9",
     "ejs": "0.7.1",
-    "mysql": "0.9.6"
+    "mysql": "0.9.6",
+    "facebook-js":"*",
+    "request":"*"
   }
 }
