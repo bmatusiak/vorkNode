@@ -2,6 +2,7 @@
 process.on('uncaughtException', function(err) {
   console.log('server.js caught error: ',err);
 });
+
 var config = {
     port: process.env.app_port || process.env.VCAP_APP_PORT || process.env.PORT || 3000,
      basepath: __dirname+'/mvc',
@@ -12,7 +13,10 @@ var config = {
 
 var vork = require('./lib/vork')(config),
     express = require('express'),
-    app = express.createServer();
+    io = require('socket.io');
+    var app = express();
+    var server = require('http').createServer(app);
+    var io = io.listen(server);
     
 app.configure(function () {
     app.use(express.cookieParser());
@@ -23,5 +27,7 @@ app.configure(function () {
     //app.use(express.static(config.webrootPath));
     app.use(express.errorHandler());
 });
- 
-app.listen(config.port);
+
+server.listen(config.port,process.env.IP);
+
+//app.listen(config.port);

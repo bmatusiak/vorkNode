@@ -30,8 +30,8 @@
     "url": "git://github.com:bmatusiak/vorkNode.git"
   },
   "dependencies": {
-    "socket.io": "0.9.6",
-    "express": "2.5.9",
+    "socket.io": "0.9.9",
+    "express": "3.0.0rc1",
     "ejs": "0.7.1",
     "mysql": "0.9.6",
     "facebook-js":"*",
