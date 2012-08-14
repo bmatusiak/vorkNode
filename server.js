@@ -5,6 +5,7 @@ process.on('uncaughtException', function(err) {
 
 var config = {
     port: process.env.app_port || process.env.VCAP_APP_PORT || process.env.PORT || 3000,
+    ip: process.env.IP || "0.0.0.0",
      basepath: __dirname+'/mvc',
      vorkpath: __dirname+"/lib/vork",
      webrootPath:  __dirname + '/webroot',
@@ -28,6 +29,6 @@ app.configure(function () {
     app.use(express.errorHandler());
 });
 
-server.listen(config.port,process.env.IP);
+server.listen(config.port,config.ip);
 
 //app.listen(config.port);
