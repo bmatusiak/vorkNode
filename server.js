@@ -9,7 +9,7 @@ var config = {
      basepath: __dirname+'/mvc',
      vorkpath: __dirname+"/lib/vork",
      webrootPath:  __dirname + '/webroot',
-     cache: false//default true for production
+     cache: true//default true for production
 };
 
 var vork = require('./lib/vork')(config),
@@ -20,10 +20,17 @@ var vork = require('./lib/vork')(config),
     var io = io.listen(server);
     
 app.configure(function () {
+    
     app.use(express.cookieParser());
     app.use(express.bodyParser());
     app.use(express.session({secret: 'secret', key: 'express.sid'}));
-    app.use(express.static(config.webrootPath));
+    function addWebroot(path){
+        app.use(express.static(path));
+        console.log("added ",path);
+    }
+    for(var i in vork.config.webrootPath){
+        addWebroot(vork.config.webrootPath[i]);
+    }
     app.use(vork.mvc());
     //app.use(express.static(config.webrootPath));
     app.use(express.errorHandler());
