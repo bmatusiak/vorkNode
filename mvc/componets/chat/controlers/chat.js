@@ -133,7 +133,7 @@ module.exports = function(vork) {
 
 
     controler.index = function() {
-        vork.layout = null;
+        vork.layout = false;
         //vork.view = "_json";
         return {
             Speak: 'Hello World'
