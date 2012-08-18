@@ -1,18 +1,50 @@
-# README for a newly created project.
+=======
+vorkNode
+========
 
-There are a couple of things you should do first, before you can use all of Git's power:
+vorkNode by Bradley Matusiak       
 
-  * Add a remote to this project: in the Cloud9 IDE command line, you can execute the following commands
-    `git remote add [remote name] [remote url (eg. 'git@github.com:/ajaxorg/node_chat')]` [Enter]
-  * Create new files inside your project
-  * Add them to to Git by executing the following command
-    `git add [file1, file2, file3, ...]` [Enter]
-  * Create a commit which can be pushed to the remote you just added
-    `git commit -m 'added new files'` [Enter]
-  * Push the commit the remote
-    `git push [remote name] master` [Enter]
+    bmatusiak@ gmail.com
+    
+    <a herf="http://vorknode.herokuapp.com/">http://vorknode.herokuapp.com/</a>
+    
+## Installation and Usage
 
-That's it! If this doesn't work for you, please visit the excellent resources from [Github.com](http://help.github.com) and the [Pro Git](http://http://progit.org/book/) book.
-If you can't find your answers there, feel free to ask us via Twitter (@cloud9ide), [mailing list](groups.google.com/group/cloud9-ide) or IRC (#cloud9ide on freenode).
+Requirements:
 
-Happy coding!
+  * NodeJS `>= 0.6.15`
+  * NPM `>= 1.1.16`
+
+Install:
+
+     get clone git://github.com/bmatusiak/vorkNode.git
+     cd vorkNode
+     npm install
+    
+## License
+
+The GPL version 3, read it at [http://www.gnu.org/licenses/gpl.txt](http://www.gnu.org/licenses/gpl.txt)
+## inspirational port
+    http://vork.us/
+----------
+##Parse Order
+      (controler_only)    ____________               ____________
+        |           |    |           |     *|   |----|           |
+        |   model   |--->| controler |      |   |    |  elements |
+        |___________|    |___________|      |   |    |____(ejs)__|
+                                |           |   |
+                         _______V_____      |   |     ____________
+                         |           |      |   |    |           |
+                         |   view    |      |---|----|  helpers  |
+                         |____(ejs)__|--    |   |    |___________|
+                                |       \   |   |
+                         _______V_____  \   |   |      ____________
+                         |           |  \   |   |    |           |
+                         |   layout  |  \   |   |    |  vorkNode |
+                         |____(ejs)__|  \   |   |----|  objects  |
+                                |       \  *|        |___________|
+                         _______V_____  \
+                         |           |<-\
+                         |   ouput   |
+                         |___________|                            
+>>>>>>> 4b17608412a2aea5c5a5523b9c513d47b436e0e9

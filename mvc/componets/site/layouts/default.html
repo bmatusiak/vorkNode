@@ -1,0 +1,41 @@
+<%
+var html = load.helper('html');
+var head = {
+    css: ['//fonts.googleapis.com/css?family=Oswald','/css/style.css'],
+    title: "vorkNode",
+    meta: [{name:'description',content:''},{name:'keywords',content:''}]
+};
+%><%- html.header(head) %>
+<div id="wrapper">
+    <div id="header">
+        <div id="logo">
+            <h1><a href="/">vorkNode</a></h1>
+            Open-Source NodeJS MVC Frameword
+        </div>
+        <div id="search">
+            <form action="/" method="post">
+                <div>
+                    <input class="form-text" name="search" size="32" maxlength="64">
+                    <input class="form-submit" type="submit" value="Search">
+                </div>
+            </form>
+        </div>
+        <div id="menu">
+            <ul>
+                <li class="current_list_item"><a href="/">VorkNode</a></li>
+                <li><a href="https://github.com/bmatusiak/vorkNode">SourceCode</a></li>
+                <br class="clearfix">
+            </ul>
+        </div>
+    </div>
+    <div id="page">
+        <div id="content">
+            <%- view %>
+        </div>
+        <div id="sidebar">
+        </div>
+        <br class="clearfix">
+    </div>
+</div>
+<%- html.tag.div({id:"footer",data:'Support vorkNode @ http://vorknode.herokuapp.com/'}) %>
+<%- html.footer() %>
