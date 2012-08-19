@@ -26,7 +26,6 @@ app.configure(function () {
     app.use(express.session({secret: 'secret', key: 'express.sid'}));
     function addWebroot(path){
         app.use(express.static(path)); 
-        console.log("added ",path);
     }
     for(var i in vork.config.webrootPath){
         addWebroot(vork.config.webrootPath[i]);
@@ -37,5 +36,5 @@ app.configure(function () {
 });
 
 server.listen(config.port,config.ip);
-
+console.log("Server running at http://127.0.0.1:"+config.port+"/")
 //app.listen(config.port);

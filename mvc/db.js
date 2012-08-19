@@ -1,13 +1,12 @@
 var returndb = null;
-var dbType = 'none';
+var dbType = 'mongoDB';
  
-//Fill these in...
+//Fill these in... for sql
 var DATABASE = 'DATABASE';
 var USERNAME = 'USERNAME';
 var PASSWORD = 'PASSWORD';
 var HOSTNAME = 'HOSTNAME';
  
-
 (function() {
     switch (dbType) {
     case 'mysql':
@@ -27,7 +26,11 @@ var HOSTNAME = 'HOSTNAME';
         console.log("mysql Loaded!");
         break;
     case 'mongoDB':
-        console.log('mongoDB LOADING!!');
+        var dbURI = process.env.MONGOLAB_URI || "mongodb://vorkjsreader:reader@ds031087.mongolab.com:31087/vorkjs";
+        var mongoose = require('mongoose');
+        mongoose.connect(dbURI);
+	console.log("mongoDB database selected")
+        returndb = mongoose;
         break;
     default:
         break;
