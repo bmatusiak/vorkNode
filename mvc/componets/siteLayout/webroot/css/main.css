@@ -1,0 +1,225 @@
+/* reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address,
+big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i,
+center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+input, textarea {margin: 0; padding: 0;}
+body {line-height: 1;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none;}
+:focus {outline: 0;}
+ins {text-decoration: none;}
+del {text-decoration: line-through;}
+table {border-collapse: collapse; border-spacing: 0;}
+
+html{color:#000;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+abbr,acronym{font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+input,textarea,select{*font-size:100%;}
+legend{color:#000;}
+
+/* \*/ html, body{height:100%;} /* */
+
+/* initialize */
+body {font-family: "Arial"; font-size: small;}
+textarea {width: 640px; height: 70px;}
+a, .textLink {text-decoration: none; color: #10478b; font-weight: bold;}
+a:hover, .textLink:hover {text-decoration: underline; color: #7987ae;}
+h1, h2, h3, h4 {margin-bottom: 3px;}
+h1, h2 {margin-left: -1px;}
+h1 {font-family: "Arial Black"; font-size: 27px; color: #000;}
+h1.midpageh1 {margin-top: 10px;}
+h2 {font-size: large; font-weight: bold; margin-top: 10px; color: #10478b;}
+h3 {font-weight: bold; color: #fc4f0c;}
+h4 {font-weight: bold; color: #10478b;}
+p {margin-bottom: 10px; line-height: 1.75;}
+li {line-height: 1.5; margin-left: 15px;}
+
+/* framework-functionality specific */
+.textLink {/*FF-fix*/ width: 15px;}
+* html .textLink {width: auto;}
+.errormessage {color: #FF0000; font-weight: bold;}
+.logoutformjs, .logoutformjs #logoutbutton {visibility: "hidden"; position: "absolute"; top: 0px; left: 0px; width: 0px; height: 0px; border: 0px;}
+#loginform, #accountbox {float: right; margin-left: 20px; width: 345px; height: auto; background: #edf2ed; text-align: right; clear: right;}
+#accountbox {padding-top: 10px; padding-bottom: 10px; text-align: left;}
+#loginform fieldset {margin: 20px;}
+#loginform label {margin-right: 10px; font-weight: bold;}
+#loginform label:after {content: ':';}
+#loginemail, #loginpass {width: 250px; margin-top: 7px;}
+#loginform .submit {font-weight: bold; margin-top: 7px;}
+#loginform #forgotpass {float: left; padding-left: 76px; line-height: 2; margin-top: 4px;}
+.dateselect label {display: none;}
+.dateselect select {margin-right: 5px;}
+.narrowinput {width: 50px;}
+.mediuminput {width: 300px;}
+.wideinput {width: 640px;}
+.fulltextarea {width: 970px; height: 500px;}
+.bigtextarea {height: 250px;}
+.htmlpreviewlabel {margin-top: 5px;}
+.htmlpreview {border: 1px outset #a4bcc6; padding-top: 5px; padding-bottom: 5px; padding-left: 1px; margin-top: 5px; margin-bottom: 5px;}
+
+.vorkwiki_lastmod {margin-top: 20px; font-style: italic;}
+
+.vorkforum_thread, .vorkforum_post, .vorkforum_post_lastmod {background: #e2f5fe;}
+.vorkforum_thread.alt, .vorkforum_post.alt, .vorkforum_post_lastmod.alt {background: #e2ecbf;}
+#vorkforum_newthread textarea, #vorkforum_reply textarea {height: 200px; width: 950px;}
+#vorkforum_newthread #ugcGuide, #vorkforum_reply #ugcGuide {width: 936px;}
+
+.vorkforum_thread {margin-top: 8px; height: 25px;}
+.vorkforum_thread h2 {padding: 5px; margin: 0px;}
+.vorkforum_thread .vorkforum_lastmod {margin-top: 5px;}
+.vorkforum_thread .vorkforum_lastmod img {margin-top: -5px;}
+.vorkforum_thread .vorkforum_lastmod, .vorkforum_thread .vorkforum_lastmod img {float: right; margin-left: 5px; margin-right: 0px;}
+
+.vorkforum_post {margin-top: 5px; padding: 5px;}
+.vorkforum_post_lastmod {font-style: italic; border-top: 1px solid;}
+.vorkforum_post_lastmod img {vertical-align: middle; margin-right: 10px;}
+.vorkforum_navlinks {text-align: right; float: right;}
+ #vorkforum_replylink {margin-top: 10px;}
+.vorkforum_navlinks, #vorkforum_replylink, #vorkforum_newthread .submit, #vorkforum_reply .submit {padding: 5px; font-size: large;}
+.vorkforum_navlinks, .vorkforum_navlinks a, #vorkforum_replylink, #vorkforum_replylink a, #vorkforum_newthread .submit, #vorkforum_reply .submit {color: #fff;}
+.vorkforum_navlinks a, #vorkforum_replylink a, #vorkforum_newthread .submit, #vorkforum_reply .submit {background: #0084c1; border: 2px solid #000; padding: 3px;}
+.vorkforum_navlinks a:hover, #vorkforum_replylink a:hover {border: 2px inset;}
+
+
+/* layout */
+body {background: #e6e6e6;}
+code {color: #df470c; font-weight: bold; letter-spacing: 1px;}
+#topstrip {background: #6c6c6c; height: 137px;}
+#header {width: 960px; margin: auto;}
+#content {width: 950px; margin: auto; background: #fff;}
+#logotop {float: left;}
+
+#osphp {float: left;}
+#osphp, #toplinks {padding-left: 15px;}
+#toplinks {float: left; height: 104px; width: 380px; font-family: "Arial Black"; font-size: x-large; padding-top: 5px;}
+#toplinks div {height: 30px;}
+#toplinks a {color: #e6e6e6; padding: 5px;}
+#toplinks a.alt {color: #FFF;}
+
+.twitterlink img {vertical-align: text-top;}
+.twitterlink a {font-weight: bold; color: #33ccff;}
+#contactheader {margin-right: 42px;}
+#contactheader strong {margin-right: 42px;}
+#loginout {float: right; margin-top: 3px; margin-right: 2px; font-weight: bold;}
+#loginout a {color: #fc4f0c;}
+
+* html #logotop {position: absolute;}
+* html #logotop img {position: relative; left: -780px;}
+* html #toplinks {padding-left: 390px;}
+* html #osphp {position: absolute;}
+* html #osphp #osphpimg, * html .twitterlink {position: relative; left: 380px;}
+
+*:first-child+html #logotop {position: relative;}
+*:first-child+html #osphp {position: absolute;}
+*:first-child+html #osphp #osphpimg, *:first-child+html .twitterlink {position: relative; left: 380px;}
+
+#logotopsublinks {background: #0084c1; position: absolute; padding: 5px; font-size: medium;}
+
+#footerupper {background: #848484; height: 58px; padding-top: 58px; margin-top: 20px;}
+#footerlower {background: #818181; height: 82px;}
+#mascot {margin: auto; background: URL('/images/vork-mascot.png') no-repeat; width: 166px; height: 188px; margin-top: -163px;}
+* html #mascot {margin-top: -187px;}
+
+/* anchor footer to bottom */
+#nonfooter {min-height: 100%; margin-bottom: -160px;}
+#content {margin-bottom: 140px; min-height: 260px;}
+* html #content {height: 260px;}
+#endofcontent {height: 50px; width: 980px;}
+* html #endofcontent {display: none;}
+#contentbottom {height: 30px;}
+* html #nonfooter {height: 100%; margin-bottom: -160px;}
+
+#bgfiller {background: #fff; width: 300px; height: 70px;}
+
+#sidemenu {float: right; background: URL('/images/sidemenu-bg.png'); width: 270px; height: 226px; margin-top: -20px; margin-left: 2px; font-family: "Arial Black"; color: #fff;}
+* html #sidemenu {margin-left: -1px}
+#sidemenu a {font-size: large; color: #fff;}
+#sidelink1 {margin-top: 40px; margin-left: 40px;}
+#sidelink2 {margin-top: 20px; margin-left: 30px;}
+#sidelink3 {margin-top: 20px; margin-left: 13px;}
+#sidelink3 a {margin-left: 7px;}
+#sidelink4 {margin-top: 20px; margin-left: 100px;}
+#sidelink5 {margin-top: 5px; margin-left: 180px;}
+
+input, select {border: 1px solid #a4bcc6; margin-bottom: 5px; margin-top: 2px;}
+.submit {background: #dfe7eb;}
+
+#content {padding: 20px;}
+#content .codeblock {margin: -20px; white-space: nowrap; /* counteract #content padding */}
+#content p {line-height: 1.75;}
+#content li {line-height: 1.5; margin-left: 15px;}
+.padbottom {margin-bottom: 15px;}
+
+/* page specific */
+#wikibody {max-width: 640px; line-height: 1.5;}
+#wikibody h3, #wikibody h4 {margin-top: 10px;}
+#wikisearch {float: right; margin-left: 10px; margin-top: -8px; width: 210px;}
+#wikititle {width: 640px;}
+
+#vorkadvantage {background: #e6e6e6; border: 1px solid #000; width: 620px; padding: 5px; margin-top: 0px;}
+#vorkadvantage h1 {color: #000; margin: 0px; font-size: 21px;}
+#vorkadvantage h1 span {color: #10478b; margin-left: 10px;}
+
+#qrcode {float right; margin-top: -57px; margin-bottom: 20px; margin-right: 80px;}
+* html #qrcode {margin-right: -200px;}
+#homepagemascot, .homepagemascot {float: right;}
+#homepage_section_508, #homepage_w3c, #homepage_tools, #homepage_databases {float: right; color: #000; font-family: "Arial Black"; text-align: right; margin-right: 7px;}
+#homepage_section_508 {font-size: x-large;}
+#homepage_w3c {font-size: x-large;}
+#homepage_tools {font-size: large;}
+#greenit {margin-top: 10px;}
+#homepage_databases {margin-top: -40px; line-height: 1.25;}
+#contestquestions input {margin-right: 10px;}
+#contestquestions legend {margin-bottom: 2px; margin-top: 10px; font-weight: bold;}
+
+.userprofiles img {float: left; padding-right: 10px;}
+.userprofiles p {clear: both; padding-top: 10px;}
+.userprofiles h3 {clear: both; padding-top: 20px;}
+
+#appini {margin: 10px; float: right; clear: right;}
+#appini {margin-top: -40px;}
+#appini h2 {padding: 3px; text-align: center; background: #fc4f0c; margin-bottom: 10px; border: 3px double;}
+#appini h2 a {color: #fff;}
+#appini h3 {text-align: center; font-size: large; margin-top: -5px; margin-bottom: 10px;}
+#apptree {clear: both; padding: 10px; margin-right: 10px; min-width: 200px; background: #e2ecbf;}
+#appini #requirements {clear: both; padding: 5px; margin-top: 10px; margin-bottom: 10px; width: 272px; background: #e2f5fe;}
+
+#appini dl dt, #appini dl dd, #pricing dl dt, #pricing dl dd {float: left; padding: 3px;}
+#appini dl dt, #pricing dl dt, #pricing h2 {clear: left;}
+#appini dl.odd dt, #appini dl.odd dd, #pricing dl.odd dt, #pricing dl.odd dd, #communitycontribute, #appslist {background: #e2ecbf;}
+#pricing dl.even dt, #pricing dl.even dd {background: #f9f1dc;}
+#appini dl dt {width: 90px; font-weight: bold;}
+#appini dl dd {width: 180px; float: right;}
+#appini dl dt:after {content: ": ";}
+#pricing dl dt {width: 650px;}
+#pricing dl dd {width: 90px;}
+#pricing h2 {padding-top: 15px;}
+
+#communitycontribute {float: right; width: auto; padding: 8px; margin-top: -8px; border: 2px solid #10478b;}
+#sponsoredactivities {float: right; width: 320px; margin-top: -40px; margin-left: 20px; border: 2px solid #fc4f0c; padding: 0px 10px 5px 10px;}
+#appslist {margin: -5px; padding: 5px; margin-top: 10px;}
+#communitycontribute h2 {margin: 0px;}
+
+#appcreator {margin-top: -10px;}
+#appcreator img {vertical-align: middle; margin-left: 5px;}
+#appcreator span {color: #000;}
+
+#codeblockheader {float: right; text-align: right; margin-top: -30px;}
+#content .codeblock {margin-top: 15px;}
+
+#ugcGuide {width: 626px; margin-top: 10px; margin-bottom: 10px; padding: 5px; line-height: 1.5; border: 3px inset;}
+
+#icons {text-align: center;}
+#icons h2 {font-size: xx-large;}
+
+#supporttable th, #supporttable td {padding: 10px; border: 1px solid;}
+
+.benchmarks {text-align: center;}
+#frameworkbenchmarks {margin-top: 20px;}
+
+.contest fieldset fieldset input {margin-right: 5px;}

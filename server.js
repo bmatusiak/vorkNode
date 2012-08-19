@@ -25,7 +25,7 @@ app.configure(function () {
     app.use(express.bodyParser());
     app.use(express.session({secret: 'secret', key: 'express.sid'}));
     function addWebroot(path){
-        app.use(express.static(path));
+        app.use(express.static(path)); 
         console.log("added ",path);
     }
     for(var i in vork.config.webrootPath){

@@ -6,6 +6,7 @@ var sys = require("util"),
 
 module.exports = function(vork) {
 
+    /*
      function Channel() {
         var messages = [],
             callbacks = [];
@@ -129,11 +130,13 @@ module.exports = function(vork) {
             }
         }, 1000);
     }
+    */
     var controler = {};
 
-
+    vork.layout = null;
+        
     controler.index = function() {
-        vork.layout = false;
+        //vork.layout = null;
         //vork.view = "_json";
         return {
             Speak: 'Hello World'
@@ -147,7 +150,7 @@ module.exports = function(vork) {
             var session = vork.globals.chat.sessions[id];
             nicks.push(session.nick);
         }
-        vork.layout = false;
+        //vork.layout = false;
         vork.view = "_json";
         return {
             nicks: nicks,
@@ -181,7 +184,7 @@ module.exports = function(vork) {
 
         //sys.puts("connection: " + nick + "@" + res.connection.remoteAddress);
         vork.globals.chat.channel.appendMessage(session.nick, "join");
-        vork.layout = false;
+        //vork.layout = false;
         vork.view = "_json";
         return {
             id: session.id,
@@ -198,7 +201,7 @@ module.exports = function(vork) {
             session = vork.globals.chat.sessions[id];
             session.destroy();
         }
-        vork.layout = false;
+        //vork.layout = false;
         vork.view = "_json";
         return {
             rss: vork.globals.chat.mem.rss
@@ -210,7 +213,7 @@ module.exports = function(vork) {
             vork.fail = {
                 code: 400
             };
-            vork.layout = false;
+            //vork.layout = false;
             vork.view = "_json";
             return {
                 error: "Must supply since parameter"
@@ -224,7 +227,7 @@ module.exports = function(vork) {
         }
 
         var since = parseInt(qs.parse(url.parse(vork.req.url).query).since, 10);
-        vork.layout = false;
+       //vork.layout = false;
         vork.view = "_json";
         vork.globals.chat.channel.query(since, function(messages) {
                 if (session) session.poke();
@@ -244,7 +247,7 @@ module.exports = function(vork) {
             vork.fail = {
                 code: 400
             };
-            vork.layout = false;
+            //vork.layout = false;
             vork.view = "_json";
             return {
                 error: "No such session id"
@@ -254,7 +257,7 @@ module.exports = function(vork) {
         session.poke();
     
         vork.globals.chat.channel.appendMessage(session.nick, "msg", text);
-        vork.layout = false;
+       // vork.layout = false;
         vork.view = "_json";
         return {
             rss: vork.globals.chat.mem.rss
