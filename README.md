@@ -47,4 +47,3 @@ The GPL version 3, read it at [http://www.gnu.org/licenses/gpl.txt](http://www.g
                          |           |<-\
                          |   ouput   |
                          |___________|                            
->>>>>>> 4b17608412a2aea5c5a5523b9c513d47b436e0e9
